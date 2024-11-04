@@ -1,0 +1,28 @@
+<div class="pokemon-details" *ngIf="pokemon">
+    <img src="https://www.vecteezy.com/free-vector/pokemon-background" alt="">
+    <h1>{{ pokemon.name }}</h1>
+  
+  <div class="pokemon-image">
+    <img [src]="pokemon.sprites?.front_default" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites?.front_shiny" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites?.back_default" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites?.back_shiny" alt="{{ pokemon.name }}" />
+
+  </div>
+  
+  <div class="pokemon-info">
+    <div class="pokemon-abilities">
+      <h2>Habilidades</h2>
+      <ul>
+        <li *ngFor="let ability of pokemon.abilities">
+          {{ ability.ability.name | uppercase }}
+          {{ ability.ability.name | replaceVowels }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!pokemon" class="no-details">
+  <p>No se encontraron detalles para este Pokémon.</p>
+</div>

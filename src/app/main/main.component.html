@@ -1,0 +1,19 @@
+<div class="form-container">
+    <form>
+      <table mat-table [dataSource]="pokemons" class="mat-elevation-z8 pokemons-table">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let pokemon" class="pokemon-cell">
+            <a [routerLink]="['main2/', getIdFromUrl(pokemon.url)]" class="pokemon-link">{{pokemon.name | titlecase}}</a>
+            <button mat-raised-button color="primary" type="button" class="fav-button" (click)="toggleFavorite(pokemon.name)">
+              Fav
+              <mat-icon *ngIf="isFavorite(pokemon.name)">favorite</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="['name']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['name'];"></tr>
+      </table>
+    </form>
+  </div>
+  
